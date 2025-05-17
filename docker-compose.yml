@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: notifications
+    ports:
+      - "5432:5432"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    platform: linux/amd64
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - rabbitmq
+
+  worker:
+    build: .
+    command: ["python", "app/workers/notification_worker.py"]
+    depends_on:
+      - db
+      - rabbitmq
+    env_file:
+      - .env
