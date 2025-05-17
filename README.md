@@ -1,94 +1,201 @@
-Great! Now that your project is pushed to GitHub, here’s a **step-by-step guide** you can share in your `README.md` or with collaborators so anyone can clone and run it locally using Docker:
+
+
+# 📬 Notification Service
+
+A scalable microservice to send **email**, **SMS**, and **in-app notifications** to users. Supports queuing via RabbitMQ and MongoDB for persistence.
 
 ---
 
-## 🚀 How to Clone and Run the Notification Service
+## 📌 Features
 
-### 🔗 1. Clone the Repository
-
-```bash
-git clone https://github.com/Suvanshhh/notification-service.git
-cd notification-service
-```
-
----
-
-### 🐳 2. Install Docker & Docker Compose
-
-Make sure [Docker](https://docs.docker.com/get-docker/) and Docker Compose are installed and running on your machine.
+* ✅ REST API using **FastAPI**
+* ✅ Notification types: **Email**, **SMS**, **In-App**
+* ✅ Asynchronous processing via **RabbitMQ**
+* ✅ MongoDB for storing notifications
+* ✅ Auto-generated **Swagger UI** for API testing
+* ✅ Dockerized and ready for deployment
+* ✅ CI/CD ready with GitHub Actions
+* ✅ Clean modular code with best practices
 
 ---
 
-### 🛠️ 3. Create an `.env` File
+## 🚀 API Endpoints
 
-Create a `.env` file in the root directory and add environment variables if required. For example:
+### 1. Send a Notification
 
-```env
-RABBITMQ_HOST=rabbitmq
-RABBITMQ_PORT=5672
-POSTGRES_DB=notifications
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=password
-```
-
-(Ensure your code references these environment variables.)
-
----
-
-### 📦 4. Build and Run the App
-
-Run this command from the root of the project:
-
-```bash
-docker-compose up --build
-```
-
-This will start:
-
-* 🐘 PostgreSQL (on port `5432`)
-* 🐇 RabbitMQ (on ports `5672` and `15672` for the dashboard)
-* ⚡ FastAPI Web Server (on port `8000`)
-* 🛠️ Background Worker (consumes tasks from RabbitMQ)
-
----
-
-### 🌐 5. Access the Services
-
-* **FastAPI Docs (Swagger UI)**: [http://localhost:8000/docs](http://localhost:8000/docs)
-* **RabbitMQ Dashboard**: [http://localhost:15672](http://localhost:15672)
-  (Default username/password: `guest` / `guest`)
-
----
-
-### 📬 6. Testing the API
-
-You can send a `POST` request to:
-
-```
-POST http://localhost:8000/notifications
-```
-
-With JSON body:
+**POST** `/notifications`
 
 ```json
 {
   "user_id": "user123",
   "type": "email",
-  "subject": "Hello",
-  "message": "This is a test notification"
+  "subject": "Welcome",
+  "message": "Thanks for joining us!"
+}
+```
+
+### 2. Get User Notifications
+
+**GET** `/users/{user_id}/notifications`
+
+```bash
+curl http://localhost:8000/users/user123/notifications
+```
+
+---
+
+## 🔍 Swagger UI – API Docs & Testing
+
+The FastAPI backend automatically generates interactive API documentation.
+
+📚 **Visit:**
+**[http://localhost:8000/docs](http://localhost:8000/docs)**
+
+🧪 You can:
+
+* Explore all available endpoints
+* Test requests directly from the browser
+* View request/response formats
+* Validate payloads using examples
+
+---
+
+## ⚙️ Technologies Used
+
+* **FastAPI** – Backend framework
+* **MongoDB** – Notification storage
+* **RabbitMQ** – Queue for background task handling
+* **Motor** – Async MongoDB driver
+* **Pika** – RabbitMQ producer/consumer
+* **Docker** – Containerized microservice
+* **GitHub Actions** – CI/CD Pipeline
+
+---
+
+## 🧪 Setup Instructions
+
+### 📁 Clone the Repository
+
+```bash
+git clone https://github.com/your-username/notification-service.git
+cd notification-service
+```
+
+### 🐳 Run with Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+It will start:
+
+* FastAPI backend → `http://localhost:8000`
+* Swagger UI → `http://localhost:8000/docs`
+* RabbitMQ dashboard → `http://localhost:15672`
+* MongoDB service → `localhost:27017`
+
+**RabbitMQ Credentials:**
+
+* Username: `guest`
+* Password: `guest`
+
+---
+
+## 🧪 Sample Notification Payloads
+
+### Email Notification
+
+```json
+{
+  "user_id": "john123",
+  "type": "email",
+  "subject": "Verification",
+  "message": "Your code is 123456"
+}
+```
+
+### SMS Notification
+
+```json
+{
+  "user_id": "john123",
+  "type": "sms",
+  "subject": "OTP",
+  "message": "Your OTP is 987654"
+}
+```
+
+### In-App Notification
+
+```json
+{
+  "user_id": "john123",
+  "type": "in-app",
+  "subject": "New Message",
+  "message": "You have a new message from Admin"
 }
 ```
 
 ---
 
-### ✅ Bonus: Sample CURL Request
+## 🧠 Assumptions Made
 
-```bash
-curl -X POST http://localhost:8000/notifications \
-  -H "Content-Type: application/json" \
-  -d '{"user_id": "user123", "type": "email", "subject": "Test", "message": "This is a test"}'
+* User authentication is out of scope.
+* Notification delivery is simulated (can integrate Twilio, SendGrid, etc.).
+* Retry mechanism is basic; can be extended for production.
+* Focused on backend functionality; frontend optional.
+
+---
+
+## 🧰 Project Structure
+
+```
+.
+├── app/
+│   ├── main.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── database.py
+│   └── queue/
+│       ├── producer.py
+│       └── consumer.py
+├── workers/
+│   └── worker.py
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-Let me know if you'd like to **add a frontend** or host the app on **Render, Railway, or Vercel**. I can help set that up too!
+## 🏗️ CI/CD Pipeline
+
+* GitHub Actions runs tests and builds image
+* Optional: Auto-deploy to hosting (e.g., Railway, Render)
+* Easily integrable with frontend CI/CD (Vercel, Netlify)
+
+---
+
+## 🌐 Deployment Options
+
+You can deploy using:
+
+* [Railway](https://railway.app/)
+* [Render](https://render.com/)
+* [Fly.io](https://fly.io/)
+* AWS/GCP/Heroku
+
+---
+
+## 🤝 Contributing
+
+Feel free to open issues or PRs to improve the service.
+
+---
+
+## 📄 License
+
+MIT License
+
+---
