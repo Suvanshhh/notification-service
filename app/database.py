@@ -1,15 +1,15 @@
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import sessionmaker
+from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import ASCENDING
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongodb:27017")
+client = AsyncIOMotorClient(MONGO_URI)
+db = client["notifications"]
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+notifications_collection = db["notifications"]
+users_collection = db["users"]  # Added users collection
 
-engine = create_async_engine(DATABASE_URL, echo=True)
-AsyncSessionLocal = sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
-
-async def get_db():
-    async with AsyncSessionLocal() as session:
-        yield session
+# Optional: Create indexes
+async def init_db():
+    await notifications_collection.create_index([("user_id", ASCENDING)])
+    await users_collection.create_index([("id", ASCENDING)], unique=True)  # unique user id index

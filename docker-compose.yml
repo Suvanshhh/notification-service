@@ -11,6 +11,11 @@ services:
     ports:
       - "5432:5432"
 
+  mongodb:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+
   rabbitmq:
     image: rabbitmq:3-management
     platform: linux/amd64
@@ -27,12 +32,14 @@ services:
     depends_on:
       - db
       - rabbitmq
+      - mongodb
 
   worker:
     build: .
     command: ["python", "app/workers/notification_worker.py"]
+    env_file:
+      - .env
     depends_on:
       - db
       - rabbitmq
-    env_file:
-      - .env
+      - mongodb

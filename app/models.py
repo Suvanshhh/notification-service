@@ -1,17 +1,17 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Text, DateTime
-from datetime import datetime
+from pydantic import BaseModel, Field, EmailStr
+from typing import Literal
 
-Base = declarative_base()
+class Notification(BaseModel):
+    user_id: str = Field(..., example="user123")
+    type: Literal["email", "sms", "in-app"]
+    subject: str
+    message: str
 
-class Notification(Base):
-    __tablename__ = "notifications"
+class NotificationInDB(Notification):
+    status: str = "queued"
 
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(String)
-    type = Column(String)
-    subject = Column(String)
-    message = Column(Text)
-    status = Column(String, default="pending")
-    retry_count = Column(Integer, default=0)
-    created_at = Column(DateTime, default=datetime.utcnow)
+class User(BaseModel):
+    id: str = Field(..., example="user123")
+    name: str = Field(..., example="John Doe")
+    email: EmailStr = Field(..., example="john.doe@example.com")
+    phone: str = Field(..., example="+1234567890")
