@@ -103,30 +103,8 @@ The FastAPI backend automatically generates interactive API documentation.
 * Test requests directly from the browser
 * View request/response formats
 * Validate payloads using examples
-
 ---
 
-## RabbitMQ Management
-<img width="470" alt="image" src="https://github.com/user-attachments/assets/936f627c-9faa-4a8a-a793-42aecf5441ef" />
-
-<img width="470" alt="image" src="https://github.com/user-attachments/assets/6fc2c410-8d4c-4753-a0c3-ab294760f208" />
-
-## Docker
-
-<img width="470" alt="image" src="https://github.com/user-attachments/assets/c47de3be-8b10-45f1-bfd5-a7f7708d1ed0" />
-
-
-
-## ⚙️ Technologies Used
-
-* **FastAPI** – Backend framework
-* **MongoDB** – Notification storage
-* **RabbitMQ** – Queue for background task handling
-* **Motor** – Async MongoDB driver
-* **Pika** – RabbitMQ producer/consumer
-* **Docker** – Containerized microservice
-  
----
 
 ## 🧪 Setup Instructions
 
@@ -191,8 +169,30 @@ It will start:
   "message": "You have a new message from Admin"
 }
 ```
-
 ---
+
+## RabbitMQ Management
+<img width="470" alt="image" src="https://github.com/user-attachments/assets/936f627c-9faa-4a8a-a793-42aecf5441ef" />
+
+<img width="470" alt="image" src="https://github.com/user-attachments/assets/6fc2c410-8d4c-4753-a0c3-ab294760f208" />
+
+## Docker
+
+<img width="470" alt="image" src="https://github.com/user-attachments/assets/c47de3be-8b10-45f1-bfd5-a7f7708d1ed0" />
+
+
+
+## ⚙️ Technologies Used
+
+* **FastAPI** – Backend framework
+* **MongoDB** – Notification storage
+* **RabbitMQ** – Queue for background task handling
+* **Motor** – Async MongoDB driver
+* **Pika** – RabbitMQ producer/consumer
+* **Docker** – Containerized microservice
+  
+---
+
 
 ## 🧠 Assumptions Made
 
