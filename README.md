@@ -14,7 +14,6 @@ A scalable microservice to send **email**, **SMS**, and **in-app notifications**
 * ✅ MongoDB for storing notifications
 * ✅ Auto-generated **Swagger UI** for API testing
 * ✅ Dockerized and ready for deployment
-* ✅ CI/CD ready with GitHub Actions
 * ✅ Clean modular code with best practices
 
 ---
