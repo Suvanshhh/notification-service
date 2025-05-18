@@ -26,12 +26,15 @@ A scalable microservice to send **email**, **SMS**, and **in-app notifications**
 
 ```json
 {
-  "user_id": "user123",
+  "user_id": "suvansh123",
   "type": "email",
   "subject": "Welcome",
-  "message": "Thanks for joining us!"
+  "message": "Messaage here!"
 }
 ```
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/6b1069b2-7131-4ffa-b546-7abf1405db45" />
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/41ffc217-1a35-483a-abb9-2923f1a26213" />
+
 
 ### 2. Get User Notifications
 
@@ -40,10 +43,54 @@ A scalable microservice to send **email**, **SMS**, and **in-app notifications**
 ```bash
 curl http://localhost:8000/users/user123/notifications
 ```
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/9ff23f7b-71dd-4110-838d-6dc3a0158f5a" />
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/bda3e919-b4d6-4b25-a487-e8a7300979da" />
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/599d2709-492b-4e8f-82dc-8fefe71fbc59" />
+
+
+### 3. Post Create User 
+```json
+{
+  "id": "suv123",
+  "name": "Suvansh Choudhary,
+  "email": "choudharysuvansh@gmail.com",
+  "phone": "+1234567890"
+}
+```
+
+**POST** `/users`
+
+```bash
+curl http://localhost:8000/users
+```
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/7c70a4d6-7590-49b9-accb-27a83432fa1b" />
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/e8f9e203-3ee2-433c-8b61-b324fa4335eb" />
+
+### 4. Get User 
+
+**GET** `/users/{user_id}`
+
+```bash
+curl http://localhost:8000/users/suv123
+```
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/33b1e0ce-d088-49b1-a81d-039d5ffbf0ea" />
+
+### 5. Root 
+
+**GET** `/`
+
+```bash
+curl http://localhost:8000/
+```
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/6c8deeaa-10af-4032-88bc-8d13bb087fcd" />
+
 
 ---
 
 ## 🔍 Swagger UI – API Docs & Testing
+
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/cc175e6c-bb6c-418c-947d-59d1e264baf3" />
+
 
 The FastAPI backend automatically generates interactive API documentation.
 
@@ -59,6 +106,17 @@ The FastAPI backend automatically generates interactive API documentation.
 
 ---
 
+## RabbitMQ Management
+<img width="470" alt="image" src="https://github.com/user-attachments/assets/936f627c-9faa-4a8a-a793-42aecf5441ef" />
+
+<img width="470" alt="image" src="https://github.com/user-attachments/assets/6fc2c410-8d4c-4753-a0c3-ab294760f208" />
+
+## Docker
+
+<img width="470" alt="image" src="https://github.com/user-attachments/assets/c47de3be-8b10-45f1-bfd5-a7f7708d1ed0" />
+
+
+
 ## ⚙️ Technologies Used
 
 * **FastAPI** – Backend framework
@@ -67,7 +125,7 @@ The FastAPI backend automatically generates interactive API documentation.
 * **Motor** – Async MongoDB driver
 * **Pika** – RabbitMQ producer/consumer
 * **Docker** – Containerized microservice
-
+  
 ---
 
 ## 🧪 Setup Instructions
