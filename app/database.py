@@ -12,11 +12,10 @@ client = AsyncIOMotorClient(
 )
 db = client["notifications"]
 
-# Define collections
+
 notifications_collection = db["notifications"]
 users_collection = db["users"]
 
-# Optional: Create indexes
 async def init_db():
     await notifications_collection.create_index([("user_id", ASCENDING)])
     await users_collection.create_index([("id", ASCENDING)], unique=True)
