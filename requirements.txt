@@ -7,5 +7,5 @@ pydantic
 python-dotenv
 motor==2.5.1
 pymongo==3.12.3
-pydantic[email]==1.10.7    # for email validation, optional but useful
+pydantic[email]==1.10.7    
 twilio

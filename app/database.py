@@ -1,12 +1,9 @@
-
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import ASCENDING
 import os
 
-# Get Mongo URI from environment (provided by Railway plugin or .env)
 MONGO_URI = os.getenv("MONGODB_URI")
 
-# Initialize client and DB
 client = AsyncIOMotorClient(
     MONGO_URI,
     serverSelectionTimeoutMS=5000,

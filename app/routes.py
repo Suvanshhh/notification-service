@@ -6,8 +6,6 @@ from bson import ObjectId
 
 router = APIRouter()
 
-# --- Notification routes ---
-
 @router.post("/notifications")
 async def send_notification(notification: Notification):
     notif_dict = notification.dict()
@@ -28,7 +26,7 @@ async def get_user_notifications(user_id: str):
         raise HTTPException(status_code=404, detail="No notifications found.")
     return notifications
 
-# --- User routes with MongoDB ---
+
 
 @router.post("/users")
 async def create_user(user: User):
@@ -44,6 +42,6 @@ async def get_user(user_id: str):
     user_doc = await users_collection.find_one({"id": user_id})
     if not user_doc:
         raise HTTPException(status_code=404, detail="User not found")
-    # Remove _id ObjectId before returning
+
     user_doc.pop("_id", None)
     return user_doc

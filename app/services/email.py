@@ -3,11 +3,11 @@ import smtplib
 from email.message import EmailMessage
 from app.utils import logger
 
-# Use environment variables for sensitive data (recommended)
+
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "choudharysuvansh05@gmail.com")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "bB6/32221010")  # Make sure to set this in env vars for prod
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "bB6/32221010") 
 
 def send_email(email_to: str, subject: str, body: str):
     try:
