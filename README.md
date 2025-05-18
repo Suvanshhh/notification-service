@@ -67,7 +67,6 @@ The FastAPI backend automatically generates interactive API documentation.
 * **Motor** – Async MongoDB driver
 * **Pika** – RabbitMQ producer/consumer
 * **Docker** – Containerized microservice
-* **GitHub Actions** – CI/CD Pipeline
 
 ---
 
@@ -106,7 +105,7 @@ It will start:
 
 ```json
 {
-  "user_id": "john123",
+  "user_id": "userno_1",
   "type": "email",
   "subject": "Verification",
   "message": "Your code is 123456"
@@ -117,7 +116,7 @@ It will start:
 
 ```json
 {
-  "user_id": "john123",
+  "user_id": "userno_2",
   "type": "sms",
   "subject": "OTP",
   "message": "Your OTP is 987654"
@@ -128,7 +127,7 @@ It will start:
 
 ```json
 {
-  "user_id": "john123",
+  "user_id": "userno_3",
   "type": "in-app",
   "subject": "New Message",
   "message": "You have a new message from Admin"
@@ -140,7 +139,7 @@ It will start:
 ## 🧠 Assumptions Made
 
 * User authentication is out of scope.
-* Notification delivery is simulated (can integrate Twilio, SendGrid, etc.).
+* Notification delivery is simulated (integrated Twilio, can integrate SendGrid, etc.).
 * Retry mechanism is basic; can be extended for production.
 * Focused on backend functionality; frontend optional.
 
@@ -165,36 +164,5 @@ It will start:
 ├── requirements.txt
 └── README.md
 ```
-
----
-
-## 🏗️ CI/CD Pipeline
-
-* GitHub Actions runs tests and builds image
-* Optional: Auto-deploy to hosting (e.g., Railway, Render)
-* Easily integrable with frontend CI/CD (Vercel, Netlify)
-
----
-
-## 🌐 Deployment Options
-
-You can deploy using:
-
-* [Railway](https://railway.app/)
-* [Render](https://render.com/)
-* [Fly.io](https://fly.io/)
-* AWS/GCP/Heroku
-
----
-
-## 🤝 Contributing
-
-Feel free to open issues or PRs to improve the service.
-
----
-
-## 📄 License
-
-MIT License
 
 ---
