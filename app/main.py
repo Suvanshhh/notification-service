@@ -12,7 +12,7 @@ app.include_router(router)
 # Run DB index creation on startup
 @app.on_event("startup")
 async def startup_event():
-    await init_db()
+    await init_db()          
 
 # Health check route
 @app.get("/")
